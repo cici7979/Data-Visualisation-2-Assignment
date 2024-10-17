@@ -87,7 +87,7 @@
             "lookup": "properties.name", 
             "from": {
               "data": {
-                "url": "https://raw.githubusercontent.com/cici7979/Data-Visualisation-2-Assignment/main/my.csv"
+                "url": "my.csv"
               },
               "key": "admin_name" ,
               "fields": ["population_proper"]

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Population By State In Malaysia</title>
+  
+  <!-- Link to Vega and Vega-Lite for visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+  <script src="vega_lite_vis.js"></script>
+
+  <!-- Styling to fit A4 portrait and center the map -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .page {
+      width: 21cm;
+      height: 29.7cm;
+      padding: 2cm;
+      box-sizing: border-box;
+    }
+
+    h1, h2 {
+      text-align: center;
+      background-color: #FFE5B4; /* Light orange/yellow */
+      padding: 10px;
+      border-radius: 8px;
+      color: #333; /* Darker text color for contrast */
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .map-container {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin: 1cm 0;
+    }
+
+    #map {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1cm;
+    }
+
+    .info-box {
+      text-align: justify;
+      padding: 1cm;
+      border: 1px solid #ddd;
+      margin-top: 1cm;
+    }
+
+    .top-population {
+      margin-top: 1cm;
+      text-align: left;
+    }
+
+    .crowded-list, .least-crowded-list {
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Population Distribution and Living Conditions Across Malaysian States</h1>
+    <div class="content">
+      <!-- Map container -->
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+      <!-- Information box or text about the map -->
+      <div class="info-box">
+        <p>In Malaysia, population distribution varies significantly across states, reflecting economic opportunities, geographical factors, and urbanization. Kuala Lumpur (KL), the capital city, stands as the most crowded area, with a population of over 1.7 million people packed into a small geographical space. This density is driven by KL's status as the country's main commercial, financial, and cultural hub, attracting individuals for jobs, education, and business. Other states like Selangor and Penang also have high population densities due to developed infrastructure, economic opportunities, and proximity to KL. In contrast, states like Perlis, Sabah, and Sarawak have lower populations, largely due to their rural landscapes, fewer economic opportunities, and less urbanization. This variation in population across states highlights the balance between economic development and living conditions, with urban centers being the most attractive for migration and growth.</p>
+      </div>
+
+      <!-- Top Crowded and Least Crowded Cities Example -->
+      <div class="top-population">
+        <h2>Top Most Crowded and Least Crowded Cities</h2>
+        <div class="crowded-list">
+          <h3>Most Crowded Cities</h3>
+          <ul>
+            <li>Kuala Lumpur - 1,768,000</li>
+            <li>Pulau Pinang - 946,092</li>
+            <li>Selangor - 878,000</li>
+            <li>Perak - 866,772</li>
+            <li>Pulau Pinang - 708,127</li>
+          </ul>
+        </div>
+        <div class="least-crowded-list">
+          <h3>Least Crowded Cities</h3>
+          <ul>
+            <li>Perlis - 48,898</li>
+            <li>Putrajaya - 67,964</li>
+            <li>Pulau Pinang - 80,378</li>
+            <li>Terengganu - 82,425</li>
+            <li>Labuan - 95,120</li>
+          </ul>
+        </div>
+      </div>  
+    </div>
+  </div>  
+</body>
+</html>
