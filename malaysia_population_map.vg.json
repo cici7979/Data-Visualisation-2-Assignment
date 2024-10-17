@@ -1,0 +1,106 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 650,
+    "height": 400,
+    "title": {
+      "text": "Population by State in Malaysia",
+      "anchor": "middle"
+    },
+    "projection": {
+      "type": "mercator",
+      "center": [109.5, 4], 
+      "scale": 1890 
+    },
+    "params": [
+      {
+        "name": "Population_Above",
+        "value": 0,
+        "bind": {
+          "input": "range",
+          "min": 48898,
+          "max": 1768000, 
+          "step": 100000,
+          "name": "State Population: "
+        }
+      },
+      {
+        "name": "State_selection",
+        "bind": {
+          "input": "select",
+          "options": [null, "Johor", "Kedah", "Kelantan", "Malacca", "Negeri Sembilan", "Pahang", "Penang", "Perak", "Perlis", "Sabah", "Sarawak", "Selangor", "Terengganu", "Kuala Lumpur", "Putrajaya"],
+          "labels": [
+            "Show All",
+            "Johor",
+            "Kedah",
+            "Kelantan",
+            "Malacca",
+            "Negeri Sembilan",
+            "Pahang",
+            "Penang",
+            "Perak",
+            "Perlis",
+            "Sabah",
+            "Sarawak",
+            "Selangor",
+            "Terengganu",
+            "Kuala Lumpur",
+            "Putrajaya"
+          ],
+          "name": "State Selection: "
+        }
+      }
+    ],
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/cici7979/Data-Visualisation-2-Assignment/main/graticules_5_malaysia.topojson",
+          "format": {
+            "type": "topojson",
+            "feature": "ne_10m_admin_1_states_provinces"
+          }
+        },
+        "mark": {
+          "type": "geoshape",
+          "stroke": "white",
+          "strokeWidth": 0.5
+        },
+        "encoding": {
+          "color": {
+            "field": "population_proper",
+            "type": "quantitative",
+            "scale": {
+              "type": "linear",
+              "domain": [48898, 1768000], 
+              "range": ["purple", "red", "orange", "yellow"] 
+            },
+            "legend": {
+              "title": "Population"
+            }
+          },
+          "tooltip": [
+            {"field": "properties.name", "type": "nominal", "title": "State"}, 
+            {"field": "population_proper", "type": "quantitative", "title": "Population", "format": ","}
+          ]
+        },
+        "transform": [
+          {
+            "lookup": "properties.name", 
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/cici7979/Data-Visualisation-2-Assignment/main/my.csv"
+              },
+              "key": "admin_name" ,
+              "fields": ["population_proper"]
+            }
+          },
+          {
+            "filter": "datum.population_proper > Population_Above"
+          },
+          {
+            "filter": "State_selection == null || datum.properties.name == State_selection"
+          }
+        ]
+      }
+    ]
+  }
+  
